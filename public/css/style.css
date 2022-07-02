@@ -1,0 +1,49 @@
+html { font-size: 62.5%; box-sizing: border-box; }
+
+*, *:before, *:after { box-sizing: inherit; }
+
+html, body { height: 100%; }
+
+body {
+    background-color: gray;
+    margin: 0;
+}
+
+section {
+    height: 96.5%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 6rem;
+    font-family: monospace;
+    margin: 0.5rem;
+}
+
+h2 {
+    font-family: 'Source Sans Pro';
+}
+
+audio {
+    display: none;
+}
+
+footer {
+    margin-left: 0.5555rem;
+    display: flex;
+    align-items: center;
+}
+
+svg {
+    height: 3rem;
+    border: 2.5px solid black;
+    border-radius: 50%;
+}
+
+.hidden {
+    display: none;
+}
