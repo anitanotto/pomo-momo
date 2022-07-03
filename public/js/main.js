@@ -53,17 +53,17 @@ function updateTimer() {
     let color1
     let color2
     if (timerState.currentPeriod === 'work') {
-       color1 = '#015d72'
+       color1 = '#ff6961'
        color2 = '#250071'
     } else if (timerState.currentPeriod === 'long break' || timerState.currentPeriod == 'short break') {
-       color1 = '#5d4166'
+       color1 = '#77dd77'
        color2 = '#250071'
     } else if (timerState.currentPeriod === 'flex1') {
        color1 = '#250071'
-       color2 = '#015d72'
+       color2 = '#ff6961'
     } else if (timerState.currentPeriod === 'flex2') {
        color1 = '#250071'
-       color2 = '#5d4166'
+       color2 = '#77dd77'
     }
     let bg = `conic-gradient(${color1} ${360 * (timerState.currentPercent/100)}deg, ${color2})`
     document.querySelector('body').style.backgroundImage = bg 
@@ -177,7 +177,11 @@ function parseReadableTime(maxPeriodTime, time) {
 
     //Plays chime at the start of every period.
         if (time === 0) {
-            document.querySelector('audio').play()
+            if (maxPeriodTime === 105) {
+                document.querySelector('#audio2').play()
+            } else {
+                document.querySelector('#audio1').play()
+            }
         }
 
     if (maxPeriodTime === 105) {
@@ -201,17 +205,17 @@ icons.forEach(e => e.addEventListener('click', muteUnmute))
 document.querySelector('#volume').addEventListener('change', adjustVolume)
 
 function muteUnmute() {
-    const audio = document.querySelector('audio')
+    const audio = Array.from(document.querySelectorAll('audio'))
     const volOff = document.querySelector('#volOff')
     const volOn = document.querySelector('#volOn')
     
-    if (audio.muted === true) {
-        audio.muted = false
+    if (audio[0].muted === true) {
+        audio.forEach(a => a.muted = false)
         volOff.classList.toggle('hidden')
         volOn.classList.toggle('hidden')
 
     } else {
-        audio.muted = true
+        audio.forEach(a => a.muted = true)
         volOff.classList.toggle('hidden')
         volOn.classList.toggle('hidden')
     }
